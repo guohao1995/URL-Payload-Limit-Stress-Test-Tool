@@ -2,6 +2,16 @@
 
 A URL & Payload Limit Stress Test Tool designed to find the breaking points of server URL path lengths and request payload size limits.
 
+## Overview
+
+When building APIs that accept collections of IDs — such as batch lookups, bulk operations, or filtered queries — developers often encounter two cryptic HTTP errors:
+
+- **HTTP 413 (Payload Too Large)** — The request **body** exceeds the server's or infrastructure's configured size limit. This can be triggered by Express `json({ limit })`, Nginx `client_max_body_size`, Azure Container Apps ingress, or any reverse proxy in the request chain.
+- **HTTP 431 (Request Header Fields Too Large)** — The **URL path** or request headers exceed the allowed length. Stuffing thousands of IDs into the URL (e.g., `/data/1001,1002,...,9999/details`) quickly hits Node.js's default 16KB header limit, proxy URL caps, or browser maximums.
+
+These errors are especially tricky because they can originate from **any layer** in the stack — your application code, a reverse proxy, a load balancer, or a cloud platform's ingress controller — and the error responses often provide little indication of which layer rejected the request.
+
+This tool provides a hands-on way to reproduce and diagnose both errors. It uses a **mock dataset of 3,000 fake pet hospital IDs** (randomly generated 4–5 digit numbers with no relation to any real entities) to simulate increasingly large requests. By selecting different numbers of hospitals and toggling between URL-path and body-based payloads, you can pinpoint the exact thresholds where each layer breaks — and verify your fix across the entire chain.
 
 ## 📁 Project Structure
 
