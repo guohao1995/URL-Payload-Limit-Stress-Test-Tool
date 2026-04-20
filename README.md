@@ -13,6 +13,8 @@ These errors are especially tricky because they can originate from **any layer**
 
 This tool provides a hands-on way to reproduce and diagnose both errors. It uses a **mock dataset of 3,000 fake pet hospital IDs** (randomly generated 4–5 digit numbers with no relation to any real entities) to simulate increasingly large requests. By selecting different numbers of hospitals and toggling between URL-path and body-based payloads, you can pinpoint the exact thresholds where each layer breaks — and verify your fix across the entire chain.
 
+<img width="3570" height="1919" alt="image" src="https://github.com/user-attachments/assets/bd029c75-8466-43c0-a50f-33c9dca98925" />
+
 ## 📁 Project Structure
 
 ```
