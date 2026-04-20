@@ -2,7 +2,6 @@
 
 A URL & Payload Limit Stress Test Tool designed to find the breaking points of server URL path lengths and request payload size limits.
 
-React/TypeScript + Node.js 
 
 ## 📁 Project Structure
 
